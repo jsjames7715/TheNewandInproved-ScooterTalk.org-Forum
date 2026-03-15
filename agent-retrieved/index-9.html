@@ -1,0 +1,238 @@
+<!--?xml version="1.0" encoding="UTF-8"?--><html><head></head><body><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-gb">
+	<link rel="self" type="application/atom+xml" href="index.html">
+
+	<title>Scooter Talk</title>
+	<subtitle>An electric scooter community on a mission to stamp out transportation mediocrity.</subtitle>
+	<link href="../../../index.php">
+	<updated>2022-05-28T05:23:41-04:00</updated>
+
+	<author><name><!--[CDATA[Scooter Talk]]--></name></author>
+	<id>https://scootertalk.org/forum/feed/forum/64</id>
+
+		<entry>
+		<author><name><!--[CDATA[Yosupra]]--></name></author>
+		<updated>2022-05-28T05:23:41-04:00</updated>
+
+		<published>2022-05-28T05:23:41-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=28419&amp;p=56779#p56779</id>
+		<link href="../../../viewtopic.php#p56779">
+		<title type="html">&lt;![CDATA[Controllers • Re: ES200g / ES-90 battery activator]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=28419&amp;p=56779#p56779"><!--[CDATA[
+#include &lt;SoftwareSerial.h&gt;<br-->#include "RuipuBattery.h"<br><br>SoftwareSerial mySerial(10, 11); // RX (green wire), TX (blue wire)  AND GND<br>RuipuBattery myBattery(&amp;mySerial);<br><br>unsigned long timer = 0;<br>bool haveReadData = false;<br><br>void setup()<br>{<br>  Serial.begin(9600);   // Initialize serial for printing results<br>  mySerial.begin(9600); // Initialize serial for BMS communications<br>}<br><br>void loop()<br>{<br>  // Non-blocking timer<br>  if (millis() - timer &gt; 500)<br>  {<br>    timer = millis();<br><br>    myBattery.unlock();   // Send the unlock command<br>    haveReadData = false; // Reset the read flag<br>  }<br><br>  if (myBattery.read() &amp;&amp; !haveReadData)<br>  {<br>    haveReadData = true; // Set the read flag<br><br>    // Serial plotter friendly outputs<br>    Serial.print(" % Charge:");<br>    Serial.print(myBattery.soc());    //Battery state of charge (0% - 100%)<br>    Serial.print(", ");<br>    Serial.print("Voltage:");<br>    Serial.print(myBattery.voltage());    //Battery voltage as a float<br>    Serial.print(", ");<br>    Serial.print("Current:");<br>    Serial.print(myBattery.current());    //Battery current as a float<br>    Serial.print(", ");<br><br>    <br>    Serial.print("Lowest cell volt:");<br>    Serial.print(myBattery.low());<br>    Serial.print(", ");<br>    Serial.print("Highest cell volt:");<br>    Serial.print(myBattery.high());<br>    Serial.print(", ");<br>    Serial.print("Max T:");<br>    Serial.print(myBattery.maxTemp());<br>    Serial.print(", ");<br>    Serial.print("Min T:");<br>    Serial.print(myBattery.minTemp());<br>    Serial.print(", ");<br>    Serial.println();<br>  }<br>}<p>Statistics: Posted by <a href="../../../memberlist.php">Yosupra</a> — Sat May 28, 2022 5:23 am</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[lethalittyyoce]]--></name></author>
+		<updated>2022-05-23T03:14:50-04:00</updated>
+
+		<published>2022-05-23T03:14:50-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=30017&amp;p=56731#p56731</id>
+		<link href="../../../viewtopic.php#p56731">
+		<title type="html">&lt;![CDATA[Controllers • Need Wiring Diagram for controller]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=30017&amp;p=56731#p56731"><!--[CDATA[
+Hello all, i recently added a second battery in parallel to my Dragon GTR v2 Dual motor scooter, and i attempted to do some cable management but i forgot to take photos of the wiring. I am now at a crossroads, i cannot find a wiring diagram at all and am struggling to connect everything back up. <br-->The controller is a JP 48V 25a controller <br>I would very very very much appreciate some help, or if someone could point me in the right direction, <br>thank you in advance<p>Statistics: Posted by <a href="../../../memberlist.php">lethalittyyoce</a> — Mon May 23, 2022 3:14 am</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[Alan2022]]--></name></author>
+		<updated>2022-05-22T10:58:54-04:00</updated>
+
+		<published>2022-05-22T10:58:54-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=30016&amp;p=56726#p56726</id>
+		<link href="../../../viewtopic.php#p56726">
+		<title type="html">&lt;![CDATA[Controllers • Phase or controller Wire ??? Both same colour problems,]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=30016&amp;p=56726#p56726"><!--[CDATA[
+Hi members I've got a controller that the box connections most have been cutoff and I'm struggling with the phase wires and display ones as there's  groups of unlabelled wires at least 2 of the same colour...arrrrhhh.<br-->I also have  throttle problems too...<br>Pictures might explain better!<br>Can anyone help me out with feedback,tips info regarding this matter please..need to get the throttle 3 wires connected but where and to which..??<br><br>More details and pictures of the controller it is...<br>And some of the other inplace connections,<br>Also what is the 3speed box connection for?<br>Also all's I want to accomplish is the wheel to run in a basic way?<br>ie: No display, or any lights etc, just throttle working, or pedal assist, and turn off/on by the battery power switch?<br>As it's only for assistance as I have severe COPD condition..and have always got around by pedal bike ... thanks in advance..<br><img src="../../../../tQyZ2HU.jpg" alt="Image" class="img-responsive img-post"><br><img src="../../../../x7AKKQv.jpg" alt="Image" class="img-responsive img-post"><br><img src="../../../../FahSNJG.png" alt="Image" class="img-responsive img-post"><p>Statistics: Posted by <a href="../../../memberlist.php">Alan2022</a> — Sun May 22, 2022 10:58 am</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[FreakerBust]]--></name></author>
+		<updated>2022-05-01T05:03:00-04:00</updated>
+
+		<published>2022-05-01T05:03:00-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=5472&amp;p=56626#p56626</id>
+		<link href="../../../viewtopic.php#p56626">
+		<title type="html">&lt;![CDATA[Controllers • Re: FLASH / CIRC Custom scooter information]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=5472&amp;p=56626#p56626"><!--[CDATA[
+I don't see the settings option in the iOS app when I unlocked the scooter.<br-->Here is a screenshot. I'm using iPhone SE 2020<br><img src="../../../../YWF9Ca0.jpg" alt="Image" class="img-responsive img-post"><p>Statistics: Posted by <a href="../../../memberlist.php">FreakerBust</a> — Sun May 01, 2022 5:03 am</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[PotatoBill]]--></name></author>
+		<updated>2022-05-01T02:11:41-04:00</updated>
+
+		<published>2022-05-01T02:11:41-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29799&amp;p=56625#p56625</id>
+		<link href="../../../viewtopic.php#p56625">
+		<title type="html">&lt;![CDATA[Controllers • Re: ST Link Locations on New Controller]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29799&amp;p=56625#p56625"><!--[CDATA[
+My guess is the three pin connector. You could always look at the datasheet for the STM chips debug pins and use a multimeter to check continuity. Perhaps though since it's not a rental unit, it's meant to be flashed via Bluetooth when connected to the g30 dash.<p-->Statistics: Posted by <a href="../../../memberlist.php">PotatoBill</a> — Sun May 01, 2022 2:11 am<p></p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[usingnamespacestd]]--></name></author>
+		<updated>2022-04-10T20:20:16-04:00</updated>
+
+		<published>2022-04-10T20:20:16-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29983&amp;p=56542#p56542</id>
+		<link href="../../../viewtopic.php#p56542">
+		<title type="html">&lt;![CDATA[Controllers • Bird Air brain]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29983&amp;p=56542#p56542"><!--[CDATA[
+Hi All, <br--><br>I was given a Bird Air VA0020 model. I was able to test the battery and the motor. Looks like all the components are working fine. However, it does not have a brain/handlebar. Does anyone know a compatible handlebar? Looks like the ESx models from segway/ninebot fit the cord at the pole. <br><br>I don't need the GPS or Bluetooth to phone feature or even the display. Just need the throttle and brake to work. When riding I don't ever look down at the speedometer. <br><br>NOTE: I don't know how to post pictures yet, but I can post a picture of the cable on the body of the scooter and any other part.<br><br>Any help is super appreciated. <br><br>Thanks, yall.<p>Statistics: Posted by <a href="../../../memberlist.php">usingnamespacestd</a> — Sun Apr 10, 2022 8:20 pm</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[JonDon]]--></name></author>
+		<updated>2022-03-13T16:11:22-04:00</updated>
+
+		<published>2022-03-13T16:11:22-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29967&amp;p=56456#p56456</id>
+		<link href="../../../viewtopic.php#p56456">
+		<title type="html">&lt;![CDATA[Controllers • Re: compatible throttle]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29967&amp;p=56456#p56456"><!--[CDATA[
+The link is not working, but the throttles are all the same, so any throttle should work.<p-->Statistics: Posted by <a href="../../../memberlist.php">JonDon</a> — Sun Mar 13, 2022 4:11 pm<p></p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[shadowtamperer]]--></name></author>
+		<updated>2022-03-12T22:39:57-04:00</updated>
+
+		<published>2022-03-12T22:39:57-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29967&amp;p=56454#p56454</id>
+		<link href="../../../viewtopic.php#p56454">
+		<title type="html">&lt;![CDATA[Controllers • Re: compatible throttle]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29967&amp;p=56454#p56454"><!--[CDATA[
+<span data-s9e-mediaembed="amazon" style="display:inline-block;width:100%;max-width:120px"--><span style="display:block;overflow:hidden;position:relative;padding-bottom:200%"> <strong>iframe</strong> </span> the link wouldn't post<p>Statistics: Posted by <a href="../../../memberlist.php">shadowtamperer</a> — Sat Mar 12, 2022 9:39 pm</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[shadowtamperer]]--></name></author>
+		<updated>2022-03-12T22:37:50-04:00</updated>
+
+		<published>2022-03-12T22:37:50-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29967&amp;p=56453#p56453</id>
+		<link href="../../../viewtopic.php#p56453">
+		<title type="html">&lt;![CDATA[Controllers • compatible throttle]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29967&amp;p=56453#p56453"><!--[CDATA[
+Hi guys. I am building a little scooter-moped thingy, and I need a throttle that will work easily out of the box with this controller. <span data-s9e-mediaembed="amazon" style="display:inline-block;width:100%;max-width:120px"--><span style="display:block;overflow:hidden;position:relative;padding-bottom:200%"> <strong>iframe</strong> </span><br>Thanks in advance! If you could also provide the wiring diagram for said throttle, that would be epic of u.<p>Statistics: Posted by <a href="../../../memberlist.php">shadowtamperer</a> — Sat Mar 12, 2022 9:37 pm</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[2kan521]]--></name></author>
+		<updated>2022-02-25T13:50:25-04:00</updated>
+
+		<published>2022-02-25T13:50:25-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=28444&amp;p=56400#p56400</id>
+		<link href="../../../viewtopic.php#p56400">
+		<title type="html">&lt;![CDATA[Controllers • Re: Okai ES100-D new controller give 0,2 volt when i connect speed throttle]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=28444&amp;p=56400#p56400"><!--[CDATA[
+Hello,<br--><br>It's happened to me: sometime the circular connector is misaligned  because the materiel is soft, and two pin can be in short circuit, unplug every connectors an check if every pin are not twisted.<p>Statistics: Posted by <a href="../../../memberlist.php">2kan521</a> — Fri Feb 25, 2022 12:50 pm</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[Pomelo]]--></name></author>
+		<updated>2022-02-23T17:37:32-04:00</updated>
+
+		<published>2022-02-23T17:37:32-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29959&amp;p=56393#p56393</id>
+		<link href="../../../viewtopic.php#p56393">
+		<title type="html">&lt;![CDATA[Controllers • Regenerative braking with a 48v motor and 36v controller]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29959&amp;p=56393#p56393"><!--[CDATA[
+Hi, I have a scooter project with a 36V battery, a 36V/48V controller  and a 48V motor. <br-->I would like to know if there is a risk of using the regenerative brake? I'm using the controller set to 36V but it can work at 48V as well, not sure if that changes anything. Here is the controller I have<br><a href="https://a.aliexpress.com/_mr7Ahuk" class="postlink" target="_blank" rel="nofollow">https://a.aliexpress.com/_mr7Ahuk</a><br>If it is not possible to do so, is there an electric brake but which does not regenerate? How to activate it? Thank you !<p>Statistics: Posted by <a href="../../../memberlist.php">Pomelo</a> — Wed Feb 23, 2022 4:37 pm</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[orlbuzz]]--></name></author>
+		<updated>2022-02-09T17:04:18-04:00</updated>
+
+		<published>2022-02-09T17:04:18-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56323#p56323</id>
+		<link href="../../../viewtopic.php#p56323">
+		<title type="html">&lt;![CDATA[Controllers • Re: General Question about charger]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56323#p56323"><!--[CDATA[
+I hope I don't end up with three or four posts of the same thing.  This doesn't seem to be working.  <br-->I found the wiring diagrams I need to (1) charge my batteries and (2) to provide power to my throttle's battery voltage indicator.<br><img src="../../../../lKpdcHg.jpg" alt="Image" class="img-responsive img-post"><br><img src="../../../../Jx9U3wV.png" alt="Image" class="img-responsive img-post"><p>Statistics: Posted by <a href="../../../memberlist.php">orlbuzz</a> — Wed Feb 09, 2022 4:04 pm</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[orlbuzz]]--></name></author>
+		<updated>2022-02-08T12:06:44-04:00</updated>
+
+		<published>2022-02-08T12:06:44-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56319#p56319</id>
+		<link href="../../../viewtopic.php#p56319">
+		<title type="html">&lt;![CDATA[Controllers • Re: General Question about charger]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56319#p56319"><!--[CDATA[
+dijkie and JonDon,<br-->thank you.<br>I should have been a little less brief !   These are 36V SLA batteries.  As I understand, these do not need a BMS.<br>As written in my original post,  "New controller does not have one small wire for charging that original controller has."   I will add a wiring diagram with that wire marked.  Without that wire, there can be no circuit to the batteries to charge them.  That's why I don't understand why the new controller has a  charge connection that is useless without that small wire.  That is why I asked if a charger could be connected directly to the batteries.<br><img src="../../../../DjOji3y.jpg" alt="Image" class="img-responsive img-post"><p>Statistics: Posted by <a href="../../../memberlist.php">orlbuzz</a> — Tue Feb 08, 2022 11:06 am</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[dijkie]]--></name></author>
+		<updated>2022-02-08T08:58:56-04:00</updated>
+
+		<published>2022-02-08T08:58:56-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56318#p56318</id>
+		<link href="../../../viewtopic.php#p56318">
+		<title type="html">&lt;![CDATA[Controllers • Re: General Question about charger]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56318#p56318"><!--[CDATA[
+you need to have a BMS, this cuts off the charging when the cell, or string of cells is full.<br-->without a BMS there is a risk of overcharging, this damages the cells and can lead to overheating of a cell or even fire.<br>the BMS also regulates the charging current per cell/string of cells so you get the maximum charge per cell and the maximum capacity of the total pack.<br><br>don't go without BMS<p>Statistics: Posted by <a href="../../../memberlist.php">dijkie</a> — Tue Feb 08, 2022 7:58 am</p><hr>
+]]&gt;</content>
+	</category></entry>
+		<entry>
+		<author><name><!--[CDATA[JonDon]]--></name></author>
+		<updated>2022-02-07T18:24:17-04:00</updated>
+
+		<published>2022-02-07T18:24:17-04:00</published>
+		<id>https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56317#p56317</id>
+		<link href="../../../viewtopic.php#p56317">
+		<title type="html">&lt;![CDATA[Controllers • Re: General Question about charger]]&gt;</title>
+
+					<category term="Controllers" scheme="https://scootertalk.org/forum/viewforum.php?f=64" label="Controllers">
+		
+		<content type="html" xml:base="https://scootertalk.org/forum/viewtopic.php?t=29946&amp;p=56317#p56317"><!--[CDATA[
+Yes, the charger is always connected directly to the battery. The BMS is connected parallel  to the battery and even if the charger is wired to the BMS it's just so to keep the wiring simple.<p-->Statistics: Posted by <a href="../../../memberlist.php">JonDon</a> — Mon Feb 07, 2022 5:24 pm<p></p><hr>
+]]&gt;</content>
+	</category></entry>
+	</feed>
+</body></html>
