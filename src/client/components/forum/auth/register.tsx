@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { forumClient, setSessionToken } from '../../../forum-client.ts';
+import { rpcClient } from '../../../rpc-client.ts';
 
 export function ForumRegister() {
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ export function ForumRegister() {
     setErrors({});
 
     try {
-      const result = await forumClient.auth.register({
+      const result = await rpcClient.forum.auth.register({
         username: formData.username,
         email: formData.email,
         password: formData.password,

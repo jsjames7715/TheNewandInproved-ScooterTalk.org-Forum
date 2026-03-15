@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { forumClient } from '../../forum-client.ts';
+import { rpcClient } from '../../rpc-client.ts';
 import { PlusIcon, ClockIcon, EyeIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 interface Thread {
@@ -43,7 +43,7 @@ export function ForumBoard() {
   const loadBoard = async () => {
     try {
       setIsLoading(true);
-      const data = await forumClient.content.getBoard({ boardId: boardId! });
+      const data = await rpcClient.forum.content.getBoard({ boardId: boardId! });
       setBoard(data.board);
       setThreads(data.threads);
       setError(null);

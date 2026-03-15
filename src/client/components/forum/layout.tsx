@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { forumClient, getSessionToken } from '../../forum-client.ts';
+import { rpcClient } from '../../rpc-client.ts';
+import { getSessionToken } from '../../forum-client.ts';
 import { BellIcon, UserIcon, HomeIcon, PlusIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 interface ForumLayoutProps {
@@ -24,7 +25,7 @@ export function ForumLayout({ children }: ForumLayoutProps) {
   const loadCurrentUser = async () => {
     setIsLoading(true);
     try {
-      const user = await forumClient.auth.getCurrentUser({ sessionToken: getSessionToken()! });
+      const user = await rpcClient.forum.auth.getCurrentUser({ sessionToken: getSessionToken()! });
       setCurrentUser(user);
     } catch (error) {
       console.error('Failed to load current user:', error);
@@ -35,7 +36,7 @@ export function ForumLayout({ children }: ForumLayoutProps) {
 
   const handleLogout = async () => {
     try {
-      await forumClient.auth.logout({ sessionToken: getSessionToken()! });
+      await rpcClient.forum.auth.logout({ sessionToken: getSessionToken()! });
       setCurrentUser(null);
       localStorage.removeItem('forum-session');
       window.location.href = '/forum';

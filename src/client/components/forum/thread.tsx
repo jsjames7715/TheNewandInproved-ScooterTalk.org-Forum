@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { forumClient } from '../../forum-client.ts';
+import { rpcClient } from '../../rpc-client.ts';
 
 export function ForumThread() {
   const { threadId } = useParams<{ threadId: string }>();
@@ -17,7 +17,7 @@ export function ForumThread() {
   const loadThread = async () => {
     try {
       setIsLoading(true);
-      const data = await forumClient.content.getThread({ threadId: threadId! });
+      const data = await rpcClient.forum.content.getThread({ threadId: threadId! });
       setThread(data.thread);
       setPosts(data.posts);
     } catch (error) {

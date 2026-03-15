@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { forumClient } from '../../forum-client.ts';
+import { rpcClient } from '../../rpc-client.ts';
 import { PlusIcon, EyeIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 interface Category {
@@ -38,7 +38,7 @@ export function ForumHome() {
   const loadCategories = async () => {
     try {
       setIsLoading(true);
-      const data = await forumClient.content.getCategories();
+      const data = await rpcClient.forum.content.getCategories();
       setCategories(data);
       setError(null);
     } catch (err) {
