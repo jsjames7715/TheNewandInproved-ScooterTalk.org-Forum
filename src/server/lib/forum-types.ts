@@ -23,7 +23,7 @@ export interface Category {
   description: string;
   icon?: string;
   order: number;
-  createdAt: number;
+  createdAt?: number;
 }
 
 export interface Board {
@@ -39,7 +39,7 @@ export interface Board {
   lastPostAt: number;
   lastPostBy?: string; // username
   order: number;
-  createdAt: number;
+  createdAt?: number;
   isArchived: boolean;
 }
 
