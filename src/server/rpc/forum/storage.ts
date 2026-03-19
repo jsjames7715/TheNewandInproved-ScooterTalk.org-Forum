@@ -1,5 +1,6 @@
 import { createStorage } from 'unstorage';
 import fsDriver from 'unstorage/drivers/fs';
+import cloudflareKVBindingDriver from 'unstorage/drivers/cloudflare-kv-binding';
 import type {
   User,
   Category,
@@ -10,8 +11,12 @@ import type {
   SessionToken,
 } from '../../lib/forum-types.ts';
 
+const isCloudflare = typeof globalThis !== "undefined" && "KV" in globalThis;
+
 const storage = createStorage({
-  driver: fsDriver({ base: '.storage/forum' }),
+  driver: isCloudflare
+    ? cloudflareKVBindingDriver({ binding: "KV" })
+    : fsDriver({ base: '.storage/forum' }),
 });
 
 // Types for better type safety

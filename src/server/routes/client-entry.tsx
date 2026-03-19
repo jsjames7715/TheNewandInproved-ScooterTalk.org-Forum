@@ -1,6 +1,5 @@
 /** @jsxImportSource hono/jsx */
 import type { Context } from "hono";
-import viteReact from "@vitejs/plugin-react";
 
 import type { BlankEnv } from "hono/types";
 
@@ -10,14 +9,23 @@ export function clientEntry(c: Context<BlankEnv>) {
       <head>
         <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <title>New Quest</title>
+        <title>ScooterTalk Forum</title>
         {import.meta.env.PROD ? (
-          <script src="/static/main.js" type="module" />
+          <>
+            <link href="/static/index.css" rel="stylesheet" />
+            <script src="/static/index.js" type="module" />
+          </>
         ) : (
           <>
             <script
               dangerouslySetInnerHTML={{
-                __html: viteReact.preambleCode.replace("__BASE__", "/"),
+                __html: `
+                  import { injectIntoGlobalHook } from "/@react-refresh";
+                  injectIntoGlobalHook(window);
+                  window.$RefreshReg$ = () => {};
+                  window.$RefreshSig$ = () => (type) => type;
+                  window.__vite_plugin_react_preamble_installed__ = true;
+                `,
               }}
               type="module"
             />

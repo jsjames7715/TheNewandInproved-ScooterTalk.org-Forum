@@ -1,6 +1,6 @@
 import { call, os } from "@orpc/server";
 import { z } from "zod";
-import { randomUUID } from "crypto";
+import { randomUUID } from "node:crypto";
 import { createKV } from "@/server/lib/create-kv";
 
 const DemoSchema = z.object({
