@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ForumLayout } from './components/forum/layout.tsx';
 import { ForumHome } from './components/forum/home.tsx';
 import { ForumLogin } from './components/forum/auth/login.tsx';
@@ -14,6 +14,7 @@ export default function ForumApp() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/forum" replace />} />
         <Route path="/forum" element={
           <ForumLayout>
             <ForumHome />
