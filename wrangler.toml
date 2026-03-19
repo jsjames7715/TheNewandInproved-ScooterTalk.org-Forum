@@ -2,11 +2,5 @@ name = "scooter-forum"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "./dist"
 
-# -------------------------------------------------
-# Pages build – we do the install ourselves
-# -------------------------------------------------
 [build]
-# Install **without** the frozen‑lockfile check, then build
-command = "pnpm install --no-frozen-lockfile && pnpm build"
-# Tell Cloudflare Pages to skip its default `pnpm install --frozen-lockfile`
-skip_install = true
+command = "npm ci && npm run build"
